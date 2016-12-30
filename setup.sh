@@ -9,11 +9,19 @@ fi
 sudo easy_install -ZU autopep8 
 sudo ln -s /usr/bin/ctags /usr/local/bin/ctags
 
+if [ -d ~/vim_old/ ];then
+    rm -rf ~/vim_old 
+fi
+
 if [ -d ~/vim ];then 
     mv ~/vim ~/vim_old
 fi
 
-if [ -d ~/.vim ];then 
+if [ -d ~/.vim_old ];then
+    rm -rf ~/.vim_old 
+fi
+
+if [ -d ~/.vim ];then
     mv ~/.vim ~/.vim_old
 fi
 
@@ -24,10 +32,10 @@ if [ -f ~/.vimrc ];then
     mv ~/.vimrc ~/.vimrc_old
 fi
 
-PATH=`pwd`
+VIM_CONFIG_FILE_PATH=`pwd`
 
-cp -f $PATH/vimrc ~/.vimrc 
-cp -f $PATH/extra_plugins/*.vim ~/.vim/plugin/ 
+cp -f $VIM_CONFIG_FILE_PATH/vimrc ~/.vimrc 
+cp -f $VIM_CONFIG_FILE_PATH/extra_plugins/*.vim ~/.vim/plugin/ 
 
 echo "
 
@@ -42,7 +50,7 @@ Symbol "!" : failed to install current bundle
 Rerun this script when the net is available
 " > vim_project
 
-vim vim_project -c "install_bundle" -c "q" -c "q"
+vim vim_project -c "BundleInstall" -c "q" -c "q"
 rm vim_project
 echo "
 **********************
