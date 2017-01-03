@@ -466,7 +466,11 @@ let NERDTreeIgnore=['\.pyc']
 "*****add by lvsenlv*****
 
 "设置tags文件的路径
-set tags=/root/hs_centos_trunk/tags  
+"进入/usr/include 和/usr/local/include 目录执行：ctags -R --c-kinds=+p
+"在工程目录中执行：ctags -R -f ~/.vim/tags +工程目录
+set tags+=/usr/include/tags
+set tags+=/usr/local/include/tags 
+set tags+=~/.vim/tags 
 
 "设置cscopequickfixa属性
 set cscopequickfix=s-,c-,d-,i-,t-,e- 
